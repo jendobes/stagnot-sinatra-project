@@ -1,0 +1,15 @@
+<h1>What have you been up to lately, <%=@user.username%>?</h1>
+<br>
+<ul>
+  <p>Look at all the adventures you've had...</p>
+  <%@user.completes.each do |a|%>
+    <li><%=a.todo.name%></li>
+    <%end%>
+</ul>
+<br>
+<ul>
+  <p>But there's still so much left to explore!</p>
+  <%@user.wishlists.each do |a|%>
+    <li><%=a.todo.name%></li>
+    <%end%>
+</ul>
