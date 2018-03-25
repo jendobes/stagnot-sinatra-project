@@ -1,0 +1,32 @@
+<h1>Learn a bit about <%=@activity.name.capitalize%></h1>
+<br>
+
+
+<%if @activity.completes.count == 1%>
+  <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>
+<%else @activity.completes.each_with_index do |a, i|%>
+  <%if i == @activity.completes.count - 1%>
+    & <%=a.user.username%>
+  <%elsif i == @activity.completes.count - 2%>
+    <%=a.user.username%>
+  <%else%>
+      <%=a.user.username%>,
+    <%end%>
+  <%end%>
+have done <%=@activity.name.capitalize%>!
+<%end%>
+<br>
+
+<%if @activity.wishlists.count == 1%>
+  <%=@activity.wishlists.first.user.username%> has <%=@activity.name.capitalize%> on their Wishlist.
+<%else @activity.wishlists.each_with_index do |a, i|%>
+  <%if i == @activity.wishlists.count - 1%>
+    & <%=a.user.username%>
+  <%elsif i == @activity.wishlists.count - 2%>
+    <%=a.user.username%>
+  <%else%>
+      <%=a.user.username%>,
+    <%end%>
+  <%end%>
+  have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activities/add/<%=@activity.id%>'>Add it to yours!</a>
+<%end%>

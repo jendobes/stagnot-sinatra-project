@@ -2,6 +2,6 @@
 <br>
 <ul>
   <%Todo.all.each do |a|%>
-    <li><%=a.name.capitalize%></li>
+    <li><a href="/activities/<%=a.id%>"><%=a.name.capitalize%></a></li>
     <%end%>
 </ul>
