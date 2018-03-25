@@ -1,0 +1,7 @@
+<h1> Here are some ideas for your next adventures ... </h1>
+<br>
+<ul>
+  <%Todo.all.each do |a|%>
+    <li><%=a.name.capitalize%></li>
+    <%end%>
+</ul>
