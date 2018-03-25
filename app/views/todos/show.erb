@@ -1,4 +1,4 @@
-<h1>Learn a bit about <%=@activity.name.capitalize%></h1>
+<h1>Learn a bit about <a href="@activity.url"><%=@activity.name.capitalize%></a></h1>
 <br>
 
 
@@ -30,3 +30,8 @@ have done <%=@activity.name.capitalize%>!
   <%end%>
   have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activities/add/<%=@activity.id%>'>Add it to yours!</a>
 <%end%>
+<br>
+<br>
+<a href='/activities'>Wanna check out more activities?</a>
+<br>
+<a href="/user/<%=current_user.id%>">Go to your homepage</a>
