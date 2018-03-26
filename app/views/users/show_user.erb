@@ -2,8 +2,8 @@
 <br>
 <ul>
   <p>Look at all the adventures you've had...</p>
-  <%@user.completes.each do |a|%>
-    <li><%=a.todo.name%></li>
+  <%@user.completes.order(:date).each do |a|%>
+    <li><%=a.date.strftime("%A, %B %d %Y")%>: <%=a.todo.name%></li>
     <%end%>
 </ul>
 <br>

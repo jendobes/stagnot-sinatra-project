@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180323144333) do
   create_table "completes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "todo_id"
+    t.date "date"
   end
 
   create_table "todos", force: :cascade do |t|
