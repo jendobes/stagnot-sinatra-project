@@ -1,3 +1,10 @@
+<%if @activity.class == Complete%>
+
+<h1>It looks like you've already done <%=@activity.name.capitalize%>! </h1>
+<br>
+
+<%else @activity.class == Wishlist%>
 <h1>It looks like <%=@activity.name.capitalize%> is already on your Wishlist! </h1>
 <br>
+<%end%>
 <a href='/activities'>Would you like to check out more activities?</a>

@@ -52,6 +52,14 @@ class TodosController < ApplicationController
     end
   end
 
+  post '/activity/completed' do
+    if logged_in?
+      @activity = Complete.create
+    else
+      redirect to '/login'
+    end
+  end
+
 
 
 end
