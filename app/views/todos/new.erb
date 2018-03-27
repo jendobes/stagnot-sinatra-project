@@ -1,36 +1,12 @@
-<h1>Add a new activity to our database!</h1>
+<h2>Add a new activity to our database!</h2>
 <form action='/activity' method='POST'>
-    <p>Enter your birthday:</p>
-    <span>
-      <label for="month">Month:</label>
-      <select id="month" name="month">
-        <%x = 0%>
-        <%while x <= 11%>
-          <%x += 1%>
-        <option><%=x%></option>
-        <%end%>
-      </select>
-    </span>
-    
-      <span>
-        <label for="day">Day:</label>
-        <select id="day" name="day">
-          <%x = 0%>
-          <%while x <= 30%>
-            <%x += 1%>
-          <option><%=x%></option>
-          <%end%>
-        </select>
-      </span>
-
-      <span>
-        <label for="year">Year:</label>
-        <select id="year" name="year">
-          <option>2018</option>
-          <option>2019</option>
-        </select>
-      </span>
-    </div>
-
-  <input type='submit' value='Add Activity'>
+  <label>Name:</label>
+  <br>
+  <input type:'text' name='name'>
+  <br>
+  <label>Link to website about this activity (optional):</label>
+  <br>
+  <input type:'text' name='url'>
+  <br>
+<input type='submit' value='Add Activity'>
 </form>

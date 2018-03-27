@@ -1,7 +1,13 @@
 <h1>What have you been up to lately, <%=@user.username%>?</h1>
 <br>
+<a href='/activities'>Get inspired for your next new thing</a>
+<br>
+<a href='/activities/completed'>Add a new adventure to your log</a>
+<br>
+<br>
+<br>
 <ul>
-  <p>Look at all the adventures you've had...</p>
+<p>Look at all the adventures you've had...</p>
   <%@user.completes.order(:date).each do |a|%>
     <li><%=a.date.strftime("%A, %B %d %Y")%>: <%=a.todo.name%></li>
     <%end%>
@@ -13,4 +19,3 @@
     <li><%=a.todo.name%></li>
     <%end%>
 </ul>
-<a href='/activities'>Get inspired for your next new thing</a>

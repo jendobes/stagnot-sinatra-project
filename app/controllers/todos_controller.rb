@@ -1,5 +1,6 @@
 class TodosController < ApplicationController
 
+
   get '/activities' do
     erb :'/todos/index'
   end
@@ -9,6 +10,14 @@ class TodosController < ApplicationController
       erb :'/todos/new'
     else
       redirect to "/login"
+    end
+  end
+
+  get '/activities/completed' do
+    if logged_in?
+      erb :'todos/addcomplete'
+    else
+      redirec to 'login'
     end
   end
 
@@ -32,5 +41,7 @@ class TodosController < ApplicationController
       redirect to '/login'
     end
   end
+
+
 
 end

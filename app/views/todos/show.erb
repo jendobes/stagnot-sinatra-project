@@ -30,6 +30,7 @@ have done <%=@activity.name.capitalize%>!
   <%end%>
   have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activities/add/<%=@activity.id%>'>Add it to yours!</a>
 <%end%>
+<% if flash.has?(:message) %> <%= flash[:message] %> <% end %>
 <br>
 <br>
 <a href='/activities'>Wanna check out more activities?</a>

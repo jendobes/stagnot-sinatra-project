@@ -1,0 +1,52 @@
+<h3>Cool, you did something new! Add it to your stagNot tracker.</h3>
+<br>
+<form action='/activity/completed' method='POST'>
+    <span>
+      <label for="activity">Activity:</label>
+      <select id="todo" name="todo">
+        <%Todo.all.each do |x|%>
+        <option><%=x.name%></option>
+        <%end%>
+      </select>
+    </span>
+
+    <span>
+      <label for="month">Month:</label>
+      <select id="month" name="month">
+        <%x = 0%>
+        <%while x <= 11%>
+          <%x += 1%>
+        <option><%=x%></option>
+        <%end%>
+      </select>
+    </span>
+
+      <span>
+        <label for="day">Day:</label>
+        <select id="day" name="day">
+          <%x = 0%>
+          <%while x <= 30%>
+            <%x += 1%>
+          <option><%=x%></option>
+          <%end%>
+        </select>
+      </span>
+
+      <span>
+        <label for="year">Year:</label>
+        <select id="year" name="year">
+          <option>2018</option>
+          <option>2019</option>
+        </select>
+      </span>
+
+<input type='submit' value='Add'>
+      <br>
+      <br>
+      <p> Don't see your activity listed? Add a new thing <a href='/activities/new'>here</a>
+
+
+    </div>
+
+
+</form>
