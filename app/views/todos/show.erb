@@ -1,4 +1,4 @@
-<h1>Learn a bit about <a href="@activity.url"><%=@activity.name.capitalize%></a></h1>
+<h1>Learn a bit about <a href=<%=@activity.url%>><%=@activity.name.capitalize%></a></h1>
 <br>
 
 <%if @activity.wishlists.count == 0%>
