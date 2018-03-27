@@ -1,11 +1,11 @@
 class TodosController < ApplicationController
 
 
-  get '/activities' do
+  get '/activity' do
     erb :'/todos/index'
   end
 
-  get '/activities/new' do
+  get '/activity/new' do
     if logged_in?
       erb :'/todos/new'
     else
@@ -13,7 +13,7 @@ class TodosController < ApplicationController
     end
   end
 
-  get '/activities/completed' do
+  get '/activity/completed' do
     if logged_in?
       erb :'todos/addcomplete'
     else
@@ -21,12 +21,12 @@ class TodosController < ApplicationController
     end
   end
 
-  get '/activities/:id' do
+  get '/activity/:id' do
     @activity = Todo.find(params[:id])
     erb :'/todos/show'
   end
 
-  get '/activities/add/:id' do
+  get '/activity/add/:id' do
     if logged_in?
       @user = current_user
       @activity = Todo.find(params[:id])
@@ -96,6 +96,16 @@ class TodosController < ApplicationController
     end
   end
 
+  post '/activity/:id/edit' do
+    if params['url'] == ""
+        redirect to "/activity/#{params[:id]}/edit"
+      else
+        @activity = Todo.find(params[:id])
+        @activity.update(:url => params['url'])
+        @activity.save
+        redirect to "/activity/#{@activity.id}"
+      end
+  end
 
 
 end

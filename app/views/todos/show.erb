@@ -2,7 +2,7 @@
 <br>
 
 <%if @activity.wishlists.count == 0%>
-<p>No one else has done <%=@activity.name.capitalize%>. Be the first!</p>
+<p>No one else has done <%=@activity.name.capitalize%>. Be the first! <a href='/activity/completed'>Add to tracker.</a></p>
 <% else %>
 <%if @activity.completes.count == 1%>
   <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>
@@ -15,13 +15,13 @@
       <%=a.user.username%>,
     <%end%>
   <%end%>
-have done <%=@activity.name.capitalize%>!
+have done <%=@activity.name.capitalize%>! <a href='/activity/completed'>Add to tracker.</a>
 <%end%>
 <%end%>
 <br>
 
 <%if @activity.wishlists.count == 0%>
-  <p>No one has <%=@activity.name.capitalize%> on their Wishlist.</p>
+  <p>No one has <%=@activity.name.capitalize%> on their Wishlist. <a href='/activity/add/<%=@activity.id%>'>Add it to yours!</a></p>
   <% else %>
 <%if @activity.wishlists.count == 1%>
   <%=@activity.wishlists.first.user.username%> has <%=@activity.name.capitalize%> on their Wishlist.
@@ -34,22 +34,32 @@ have done <%=@activity.name.capitalize%>!
       <%=a.user.username%>,
     <%end%>
   <%end%>
-  have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activities/add/<%=@activity.id%>'>Add it to yours!</a>
+  have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activity/add/<%=@activity.id%>'>Add it to yours!</a>
 <%end%>
     <%end%>
+
+
 <br>
 <br>
-<a href='/activities'>Wanna check out more activities?</a>
+<a href='/activity'>Wanna check out more activities?</a>
 <br>
-<a href="/user/<%=current_user.id%>">Go to your homepage</a>
 <br>
+
+
 <form method="post" action="/activity/wishlist/<%=@activity.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Activity from Wishlist">
+  <input type="submit" value="Delete this activity from your Wishlist">
 </form>
 <br>
 <form method="post" action="/activity/completed/<%=@activity.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Activity from Tracker">
+  <input type="submit" value="Delete this activity from your Tracker">
 </form>
 <br>
+
+
+<form action='/activity/<%=@activity.id%>/edit' method='POST'>
+  <label>Don't like this activity's link? Submit a new one here.</label>
+  <input id="url" type="text" name="url" value=<%=@activity.url%> ><br>
+  <input type="submit" value="Edit">
+</form>
