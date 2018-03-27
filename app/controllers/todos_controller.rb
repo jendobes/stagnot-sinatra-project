@@ -54,7 +54,11 @@ class TodosController < ApplicationController
 
   post '/activity/completed' do
     if logged_in?
-      @activity = Complete.create
+      id = Todo.find_by(:name => params[:todo]).id
+      array = [params[:year], params[:month], params[:day]]
+      date = array.join('-')
+      @activity = Complete.create(:user_id => current_user.id, :todo_id => id, :date => date)
+      redirect to "/user/#{current_user.id}"
     else
       redirect to '/login'
     end

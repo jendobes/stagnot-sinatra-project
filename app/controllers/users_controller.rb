@@ -31,7 +31,6 @@ class UsersController < ApplicationController
         login(user.id)
         redirect to "/user/#{user.id}"
       else
-        # flash[:message] = "Please create an account before logging in."
         redirect to '/signup'
       end
   end
