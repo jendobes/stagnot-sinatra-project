@@ -17,7 +17,7 @@ class TodosController < ApplicationController
     if logged_in?
       erb :'todos/addcomplete'
     else
-      redirec to 'login'
+      redirect to '/login'
     end
   end
 
@@ -37,6 +37,16 @@ class TodosController < ApplicationController
     else
       erb :'/todos/addfail'
     end
+    else
+      redirect to '/login'
+    end
+  end
+
+  post '/activity' do
+    if logged_in?
+      @activity = Todo.create(name: params[:name], url: params[:url])
+      @activity.save
+      erb :'/todos/index'
     else
       redirect to '/login'
     end
