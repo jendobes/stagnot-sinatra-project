@@ -30,7 +30,7 @@ class TodosController < ApplicationController
     if logged_in?
       @user = current_user
       @activity = Todo.find(params[:id])
-      array = User.find(2).wishlists.map{|a| a.todo.id}
+      array = current_user.wishlists.map{|a| a.todo.id}
       if !array.include?(@activity.id)
       Wishlist.create(:user_id => current_user.id, :todo_id => @activity.id)
       erb :'/todos/addwishlist'
@@ -53,12 +53,18 @@ class TodosController < ApplicationController
   end
 
   post '/activity/completed' do
+    id = Todo.find_by(:name => params[:todo]).id
     if logged_in?
-      id = Todo.find_by(:name => params[:todo]).id
-      array = [params[:year], params[:month], params[:day]]
-      date = array.join('-')
-      @activity = Complete.create(:user_id => current_user.id, :todo_id => id, :date => date)
-      redirect to "/user/#{current_user.id}"
+      completed = current_user.completes.map{|a| a.todo.id}
+        if !completed.include?(id)
+          array = [params[:year], params[:month], params[:day]]
+          date = array.join('-')
+          @activity = Complete.create(:user_id => current_user.id, :todo_id => id, :date => date)
+          redirect to "/user/#{current_user.id}"
+        else
+          @activity = Todo.find_by(:name => params[:todo])
+          erb :'/todos/addfail'
+        end
     else
       redirect to '/login'
     end
