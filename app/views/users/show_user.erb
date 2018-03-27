@@ -1,22 +1,26 @@
 <h1>What have you been up to lately, <%=@user.username%>?</h1>
 <br>
+<h5>Click on the activity link to learn more about it, or to delete it from your Wishlist or Tracker.</h5>
+<br>
 <a href='/activities'>Get inspired for your next new thing</a>
 <br>
 <a href='/activities/completed'>Add a new adventure to your log</a>
 <br>
-<a href='/logout'>Logout</a>
+
 <br>
 <br>
 <ul>
+<h3>Tracker</h3>
 <p>Look at all the adventures you've had...</p>
   <%@user.completes.order(:date).each do |a|%>
-    <li><%=a.date.strftime("%A, %B %d %Y")%>: <%=a.todo.name%></li>
+    <li><%=a.date.strftime("%A, %B %d %Y")%>: <a href='/activities/<%=a.todo_id%>'><%=a.todo.name%></a></li>
     <%end%>
 </ul>
 <br>
 <ul>
-  <p>But there's still so much left to explore!</p>
+  <h3>Wishlist</h3>
+    <p>But there's still so much left to explore!</p>
   <%@user.wishlists.each do |a|%>
-    <li><%=a.todo.name%></li>
+    <li><a href='/activities/<%=a.todo_id%>'><%=a.todo.name%></a></li>
     <%end%>
 </ul>

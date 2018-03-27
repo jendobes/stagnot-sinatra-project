@@ -9,8 +9,8 @@
     <nav>
       <% if logged_in? %>
         <h3>StagNot</h3>
-        <a href="/user/<%=current_user.id%>"> Homepage </a>
-        <!-- <a href="/logout"> Log Out </a> -->
+        <a href="/user/<%=current_user.id%>"> Homepage </a> |
+        <a href="/logout"> Log Out </a>
         <p>Welcome, <%=current_user.username %></p>
 
       <% else %>

@@ -42,3 +42,14 @@ have done <%=@activity.name.capitalize%>!
 <a href='/activities'>Wanna check out more activities?</a>
 <br>
 <a href="/user/<%=current_user.id%>">Go to your homepage</a>
+<br>
+<form method="post" action="/activity/wishlist/<%=@activity.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Activity from Wishlist">
+</form>
+<br>
+<form method="post" action="/activity/completed/<%=@activity.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Activity from Tracker">
+</form>
+<br>

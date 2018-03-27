@@ -1,10 +1,7 @@
-<%if @activity.class == Complete%>
 
-<h1>It looks like you've already done <%=@activity.name.capitalize%>! </h1>
+Hmm, it looks like we weren't able to process that request.
+This activity either isn't in your Wishlist or isn't in your Tracker.
 <br>
-
-<%else @activity.class == Wishlist%>
-<h1>It looks like <%=@activity.name.capitalize%> is already on your Wishlist! </h1>
-<br>
-<%end%>
 <a href='/activities'>Would you like to check out more activities?</a>
+<br>
+<a href='/user/<%=current_user.id%>'>Would you like to go back to your homepage?</a>

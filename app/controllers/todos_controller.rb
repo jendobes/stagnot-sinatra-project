@@ -70,6 +70,32 @@ class TodosController < ApplicationController
     end
   end
 
+  delete '/activity/wishlist/:id/delete' do
+    if logged_in?
+      if @activity = Wishlist.find_by(:user_id => current_user, :todo_id => params[:id])
+        @activity.delete
+        redirect to "user/#{current_user.id}"
+      else
+        erb :'/todos/addfail'
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
+  delete '/activity/completed/:id/delete' do
+    if logged_in?
+      if @activity = Complete.find_by(:user_id => current_user, :todo_id => params[:id])
+        @activity.delete
+        redirect to "user/#{current_user.id}"
+      else
+        erb :'/todos/addfail'
+      end
+    else
+      redirect to '/login'
+    end
+  end
+
 
 
 end
