@@ -1,21 +1,23 @@
 <h1>What have you been up to lately, <%=@user.username%>?</h1>
 <br>
 <h5>Click on the activity link to learn more about it, or to delete it from your Wishlist or Tracker.</h5>
-<br>
-<a href='/activity'>Get inspired for your next new thing</a>
-<br>
-<a href='/activity/completed'>Add a new adventure to your log</a>
+
 <br>
 
 <br>
 <br>
 <ul>
 <h3>Tracker</h3>
+
 <p>Look at all the adventures you've had...</p>
   <%@user.completes.order(:date).each do |a|%>
     <li><%=a.date.strftime("%A, %B %d %Y")%>: <a href='/activity/<%=a.todo_id%>'><%=a.todo.name%></a></li>
     <%end%>
+    <br>
+    <a href='/activity/completed'>Add a new adventure to your log</a>
+    <br>
 </ul>
+
 <br>
 <ul>
   <h3>Wishlist</h3>
@@ -23,4 +25,10 @@
   <%@user.wishlists.each do |a|%>
     <li><a href='/activity/<%=a.todo_id%>'><%=a.todo.name%></a></li>
     <%end%>
+      <br>
+    <a href='/activity'>Get inspired for your next new thing</a>
+
 </ul>
+      <br>
+            <br>
+                  <br>
