@@ -2,7 +2,7 @@
 <br>
 
 <%if @activity.completes.count == 0%>
-<p>No one else has done <%=@activity.name.capitalize%>. Be the first!</p>
+<p>No one else has done <%=@activity.name.capitalize%>. Be the first!</p> <a href='/activity/completed'>Add to tracker</a>
 <% else %>
 <%if @activity.completes.count == 1%>
   <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>.
@@ -22,7 +22,7 @@ have done <%=@activity.name.capitalize%>!
 <br>
 
 <%if @activity.wishlists.count == 0%>
-  <p>No one has <%=@activity.name.capitalize%> on their Wishlist.
+  <p>No one has <%=@activity.name.capitalize%> on their Wishlist. <a href='/activity/add/<%=@activity.id%>'>Add to Wishlist</a>
   <% else %>
 <%if @activity.wishlists.count == 1%>
   <%=@activity.wishlists.first.user.username%> has <%=@activity.name.capitalize%> on their Wishlist.
