@@ -1,11 +1,11 @@
-<h1>Learn a bit about <a href=<%=@activity.url%>><%=@activity.name.capitalize%></a></h1>
+<h1>Learn a bit about <a href=<%=@activity.url%> target="_blank"><%=@activity.name.capitalize%></a></h1>
 <br>
 
-<%if @activity.wishlists.count == 0%>
-<p>No one else has done <%=@activity.name.capitalize%>. Be the first! <a href='/activity/completed'>Add to tracker.</a></p>
+<%if @activity.completes.count == 0%>
+<p>No one else has done <%=@activity.name.capitalize%>. Be the first!</p>
 <% else %>
 <%if @activity.completes.count == 1%>
-  <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>
+  <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>.
 <%else @activity.completes.each_with_index do |a, i|%>
   <%if i == @activity.completes.count - 1%>
     & <%=a.user.username%>
@@ -15,13 +15,14 @@
       <%=a.user.username%>,
     <%end%>
   <%end%>
-have done <%=@activity.name.capitalize%>! <a href='/activity/completed'>Add to tracker.</a>
+have done <%=@activity.name.capitalize%>!
 <%end%>
+<a href='/activity/completed'>Add to tracker</a>
 <%end%>
 <br>
 
 <%if @activity.wishlists.count == 0%>
-  <p>No one has <%=@activity.name.capitalize%> on their Wishlist. <a href='/activity/add/<%=@activity.id%>'>Add it to yours!</a></p>
+  <p>No one has <%=@activity.name.capitalize%> on their Wishlist.
   <% else %>
 <%if @activity.wishlists.count == 1%>
   <%=@activity.wishlists.first.user.username%> has <%=@activity.name.capitalize%> on their Wishlist.
@@ -34,8 +35,9 @@ have done <%=@activity.name.capitalize%>! <a href='/activity/completed'>Add to t
       <%=a.user.username%>,
     <%end%>
   <%end%>
-  have <%=@activity.name.capitalize%> on their Wishlist. <a href='/activity/add/<%=@activity.id%>'>Add it to yours!</a>
+  have <%=@activity.name.capitalize%> on their Wishlist.
 <%end%>
+<a href='/activity/add/<%=@activity.id%>'>Add to Wishlist</a>
     <%end%>
 
 
