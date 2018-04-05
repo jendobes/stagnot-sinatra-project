@@ -2,7 +2,7 @@
 <br>
 
 <%if @activity.completes.count == 0%>
-<p>No one else has done <%=@activity.name.capitalize%>. Be the first!</p> <a href='/activity/completed'>Add to tracker</a>
+<p>No one else has done <%=@activity.name.capitalize%>. Be the first!  <a href='/activity/completed'>Add to tracker</a></p>
 <% else %>
 <%if @activity.completes.count == 1%>
   <%=@activity.completes.first.user.username%> has done <%=@activity.name.capitalize%>.
