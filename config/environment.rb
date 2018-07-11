@@ -1,7 +1,10 @@
 
-require_all 'app'
+
 require 'bundler/setup'
 require 'active_record'
+require 'require_all'
+
+require_all 'app'
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
