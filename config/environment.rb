@@ -20,6 +20,6 @@ configure :production do
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 end
 
-# require_all 'app'
-Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].each { |f| load(f) }
-Dir["#{File.dirname(__FILE__)}/lib/**/*.erb"].each { |f| load(f) }
+require_all 'app'
+# Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].each { |f| load(f) }
+# Dir["#{File.dirname(__FILE__)}/lib/**/*.erb"].each { |f| load(f) }
